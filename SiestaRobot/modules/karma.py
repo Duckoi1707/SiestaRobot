@@ -19,8 +19,8 @@ from SiestaRobot.ex_plugins.dbfunctions import (
 from SiestaRobot.utils.filter_groups import karma_negative_group, karma_positive_group
 from SiestaRobot import arq
 
-regex_upvote = r"^((?i)\+|\+\+|\+1|thx|thanx|thanks|pro|cool|good|👍)$"
-regex_downvote = r"^(\-|\-\-|\-1|👎|noob|weak)$"
+regex_upvote = r"^((?i)\+|\+\+|\+1|Đỉnh|Yêu|Thương||cool|good|👍)$"
+regex_downvote = r"^(\-|\-\-|\-1|👎|Gà|weak)$"
 
 
 
@@ -61,7 +61,7 @@ async def upvote(_, message):
         chat_id, await int_to_alpha(user_id), new_karma
     )
     await message.reply_text(
-        f"Incremented Karma of {user_mention} By 1 \nTotal Points: {karma}"
+        f"{user_mention} Bạn Vừa Được Cộng 1 Điểm Đáng Iu \nTổng Điểm Hiện Có Là: {karma}"
     )
 
 
@@ -98,7 +98,7 @@ async def upvote(_, message):
     new_karma = {"karma": karma}
     await update_karma(chat_id, await int_to_alpha(user_id), new_karma)
     await message.reply_text(
-        f"Incremented Karma of {user_mention} By 1 \nTotal Points: {karma}"
+       f"{user_mention} Bạn Vừa Được Cộng 1 Điểm Đáng Iu \nTổng Điểm Hiện Có Là: {karma}"
     )
 
 
@@ -136,7 +136,7 @@ async def downvote(_, message):
     new_karma = {"karma": karma}
     await update_karma(chat_id, await int_to_alpha(user_id), new_karma)
     await message.reply_text(
-        f"Decremented Karma Of {user_mention} By 1 \nTotal Points: {karma}"
+      f"{user_mention} Bạn Vừa Bị Trừ 1 Điểm Đáng Iu \nTổng Điểm Hiện Có Là: {karma}"
     )
 
 
@@ -145,10 +145,10 @@ async def downvote(_, message):
 async def karma(_, message):
     chat_id = message.chat.id
     if not message.reply_to_message:
-        m = await message.reply_text("Analyzing Karma...Will Take 10 Seconds")
+        m = await message.reply_text("Phân tích điểm đáng yêu ... Sẽ mất 10 giây")
         karma = await get_karmas(chat_id)
         if not karma:
-            await m.edit("No karma in DB for this chat.")
+            await m.edit("Không có điểm đáng iu trong DB cho chat này.")
             return
         msg = f"**Karma list of {message.chat.title}:- **\n"
         limit = 0
@@ -161,7 +161,7 @@ async def karma(_, message):
                 sorted(karma_dicc.items(), key=lambda item: item[1], reverse=True)
             )
         if not karma_dicc:
-            await m.edit("No karma in DB for this chat.")
+            await m.edit("Không có điểm đáng iu trong DB cho chat này.")
             return
         for user_idd, karma_count in karma_arranged.items():
             if limit > 9:
@@ -182,7 +182,7 @@ async def karma(_, message):
         user_id = message.reply_to_message.from_user.id
         karma = await get_karma(chat_id, await int_to_alpha(user_id))
         karma = karma["karma"] if karma else 0
-        await message.reply_text(f"**Total Points**: __{karma}__")
+        await message.reply_text(f"**Tổng điểm**: __{karma}__")
 
 
 @app.on_message(filters.command("karma") & ~filters.private)
