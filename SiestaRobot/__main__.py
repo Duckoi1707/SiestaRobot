@@ -81,41 +81,41 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hello {} !*
-✪ I'm an anime-theme management bot [✨](https://telegra.ph/file/b8fe73c5ad42d10d63f7b.jpg)
+*Xin Chào Bạn Trẻ Tên{} !*
+✪ Tôi là một bot quản lý của OGGYVN [✨](https://telegra.ph/file/ed27010abc3804bebbddd.jpg)
 ────────────────────────
-× *Uptime:* `{}`
-× `{}` *users, across* `{}` *chats.*
+× *Thời Gian BOT Hoạt Động Là:* `{}`
+× `{}` *Người Dùng, Sử Dụng* `{}` *Nhóm.*
 ────────────────────────
-✪ Hit /help to see my available commands.
+✪ Sử Dụng /help Để Biết Cách Chi Tiết Sử Dụng.
 """
 
 buttons = [
     [
-        InlineKeyboardButton(text="About Siesta Robot", callback_data="siesta_"),
+        InlineKeyboardButton(text="Thông Tin BOT OGGYVN", callback_data="siesta_"),
     ],
     [
-        InlineKeyboardButton(text="Get Help", callback_data="help_back"),
+        InlineKeyboardButton(text="Hỗ Trợ", callback_data="help_back"),
         InlineKeyboardButton(
-            text="Try inline!​​", switch_inline_query_current_chat=""
+            text="Nội Tuyến BOT!​​", switch_inline_query_current_chat=""
         ),
     ],
     [
         InlineKeyboardButton(
-            text="➗ Add Siesta To Your Group ➗", url="t.me/Siestaxbot?startgroup=new"),
+            text="× Thêm BOT Vào Nhóm ×", url="t.me/oggyvietnam_bot?startgroup=new"),
     ],
 ]
 
 
 HELP_STRINGS = """
-Click on the button bellow to get description about specifics command."""
+Nhấp vào nút bên dưới để xem mô tả về lệnh cụ thể."""
 
-EMI_IMG = "https://telegra.ph/file/b8fe73c5ad42d10d63f7b.jpg"
+EMI_IMG = "https://telegra.ph/file/ed27010abc3804bebbddd.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @saint_foire \
- Supporting isnt always financial! \
- Those who cannot provide monetary support are welcome to help us develop the bot at ."""
+DONATE_STRING = """Heya, rất vui khi biết bạn muốn quyên góp!
+ Bạn có thể ủng hộ dự án bằng cách liên hệ @oggyvn \
+ Hỗ trợ không phải lúc nào cũng tài chính! \
+ Những người không thể cung cấp hỗ trợ tiền tệ được hoan nghênh giúp chúng tôi phát triển bot tại nhóm ."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -360,29 +360,29 @@ def siesta_about_callback(update, context):
     query = update.callback_query
     if query.data == "siesta_":
         query.message.edit_text(
-            text="๏ I'm *Siesta*, a powerful group management bot built to help you manage your group easily."
-            "\n• I can restrict users."
-            "\n• I can greet users with customizable welcome messages and even set a group's rules."
-            "\n• I have an advanced anti-flood system."
-            "\n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc."
-            "\n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
-            "\n• I check for admins' permissions before executing any command and more stuffs"
-            "\n\n_Siesta's licensed under the GNU General Public License v3.0_"
-            "\n\n Click on button bellow to get basic help for Siesta Robot.",
+            text="๏ Tôi Là*OGGYVN*, một bot quản lý nhóm mạnh mẽ được xây dựng để giúp bạn quản lý nhóm của mình một cách dễ dàng."
+            "\n• Tôi có thể hạn chế người dùng."
+            "\n• Tôi có thể chào mừng người dùng bằng các tin nhắn chào mừng có thể tùy chỉnh và thậm chí thiết lập các quy tắc của nhóm."
+            "\n• Tôi có một hệ thống chống lũ lụt tiên tiến."
+            "\n• Tôi có thể cảnh báo người dùng cho đến khi họ đạt đến cảnh báo tối đa, với mỗi hành động được xác định trước như cấm, tắt tiếng, đá, v.v.."
+            "\n• Tôi có một hệ thống lưu giữ ghi chú, danh sách đen và thậm chí là các câu trả lời định trước cho một số từ khóa nhất định."
+            "\n• Tôi kiểm tra quyền của quản trị viên trước khi thực hiện bất kỳ lệnh nào và nhiều nội dung khác"
+            "\n\n_OGGYVN được cấp phép theo Giấy phép Công cộng GNU v3.0_"
+            "\n\n Nhấp vào nút bên dưới để nhận trợ giúp cơ bản cho Robot OGGY.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Admins", callback_data="siesta_admin"),
-                    InlineKeyboardButton(text="Notes", callback_data="siesta_notes"),
+                    InlineKeyboardButton(text="Admin", callback_data="siesta_admin"),
+                    InlineKeyboardButton(text="Ghi Chú", callback_data="siesta_notes"),
                  ],
                  [
-                    InlineKeyboardButton(text="Support", callback_data="siesta_support"),
-                    InlineKeyboardButton(text="Credits", callback_data="siesta_credit"),
+                    InlineKeyboardButton(text="Hỗ Trợ", callback_data="siesta_support"),
+                    InlineKeyboardButton(text="Chủ BOT", callback_data="siesta_credit"),
                  ],
                  [
-                    InlineKeyboardButton(text="Source Code", url="https://github.com/shiinobu/SiestaRobot"),
+                    InlineKeyboardButton(text="Ủng Hộ", url="https://me.momo.vn/G9IPiNslsVCouaImsKCQ"),
                  ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="siesta_back"),
@@ -407,27 +407,27 @@ def siesta_about_callback(update, context):
 
     elif query.data == "siesta_admin":
         query.message.edit_text(
-            text=f"*๏ Let's make your group bit effective now*"
-            "\nCongragulations, Siesta Robot now ready to manage your group."
-            "\n\n*Admin Tools*"
-            "\nBasic Admin tools help you to protect and powerup your group."
-            "\nYou can ban members, Kick members, Promote someone as admin through commands of bot."
-            "\n\n*Greetings*"
-            "\nLets set a welcome message to welcome new users coming to your group."
-            "\nsend `/setwelcome [message]` to set a welcome message!",
+           text=f"*๏ Hãy làm cho nhóm của bạn hiệu quả ngay bây giờ*"
+            "\nXin chúc mừng, OGGY Robot hiện đã sẵn sàng để quản lý nhóm của bạn."
+            "\n\n*Công cụ quản trị*"
+            "\nCác công cụ quản trị cơ bản giúp bạn bảo vệ và tăng cường sức mạnh cho nhóm của mình."
+            "\nBạn có thể cấm thành viên, Kick thành viên, Thăng cấp ai đó làm quản trị viên thông qua lệnh của bot."
+            "\n\n*Lời chào hỏi*"
+            "\nCho phép thiết lập một thông điệp chào mừng để chào mừng những người dùng mới đến với nhóm của bạn."
+            "\nsend `/setwelcome [message]` để thiết lập một thông điệp chào mừng!",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="siesta_")]]
+                [[InlineKeyboardButton(text="Quay Lại", callback_data="siesta_")]]
             ),
         )
 
     elif query.data == "siesta_notes":
         query.message.edit_text(
-            text=f"<b>๏ Setting up notes</b>"
-            f"\nYou can save message/media/audio or anything as notes"
-            f"\nto get a note simply use # at the beginning of a word"
-            f"\n\nYou can also set buttons for notes and filters (refer help menu)",
+            text=f"<b>๏ Thiết lập ghi chú</b>"
+            f"\nBạn có thể lưu tin nhắn /media /audio hoặc bất kỳ thứ gì dưới dạng ghi chú"
+            f"\nĐể có một ghi chú, chỉ cần sử dụng # ở đầu một từ"
+            f"\n\nBạn cũng có thể đặt các nút cho ghi chú và bộ lọc (tham khảo menu trợ giúp)",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text="Go Back", callback_data="siesta_")]]
@@ -435,17 +435,17 @@ def siesta_about_callback(update, context):
         )
     elif query.data == "siesta_support":
         query.message.edit_text(
-            text="*๏ Siesta support chats*"
-            "\nJoin My Support Group/Channel for see or report a problem on Siesta.",
+            text="*๏ Trò chuyện hỗ trợ Siesta*"
+            "\nTham gia Nhóm / Kênh hỗ trợ của tôi để xem hoặc báo cáo sự cố bot GGY.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Support", url="t.me/machinaxupport"),
-                    InlineKeyboardButton(text="Updates", url="https://t.me/machinaxupdate"),
+                    InlineKeyboardButton(text="Hỗ Trợ Nhóm", url="t.me/wallemusic"),
+                    InlineKeyboardButton(text="Cập Nhật", url="https://t.me/oggyvn"),
                  ],
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="siesta_"),
+                    InlineKeyboardButton(text="Quay Lại", callback_data="siesta_"),
                  
                  ]
                 ]
@@ -455,21 +455,17 @@ def siesta_about_callback(update, context):
 
     elif query.data == "siesta_credit":
         query.message.edit_text(
-            text=f"๏ Credis for Siesta\n"
-            "\nHere Developers Making And Give Inspiration For Made The Siesta Robot",
+            text=f"๏ Ngườ Phát Triển OGGY VN\n"
+            "\nTại đây các nhà phát triển đã tạo ra và truyền cảm hứng để tạo ra robot OGGY",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Vain", url="https://github.com/shiinobu"),
-                    InlineKeyboardButton(text="Sena-Ex", url="https://github.com/kennedy-ex"),
+                    InlineKeyboardButton(text="OGGYVN", url="https://github.com/oggyvn"),
+                    InlineKeyboardButton(text="VXer2", url="https://github.com/oggynano"),
                  ],
                  [
-                    InlineKeyboardButton(text="Paul Larsen", url="https://github.com/PaulSonOfLars"),
-                    InlineKeyboardButton(text="TheHamkerCat", url="https://github.com/TheHamkerCat"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="siesta_"),
+                    InlineKeyboardButton(text="Quay Lại", callback_data="siesta_"),
                  ]
                 ]
             ),
@@ -479,7 +475,7 @@ def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text="๏›› This advance command for Musicplayer."
+            text="๏›› Lệnh nâng cao này dành cho Trình phát nhạc."
             "\n\n๏ Command for admins only."
             "\n • `/reload` - For refreshing the adminlist."
             "\n • `/pause` - To pause the playback."
