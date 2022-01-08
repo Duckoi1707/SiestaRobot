@@ -25,7 +25,7 @@ luatbot5 = "https://telegra.ph/file/b8e2f6eff4ddd608561d8.jpg"
 async def doa(event):
     chat = await event.get_chat()
     await event.delete()
-    pm_caption = f"**Ê Thằng Lồn {user_mention} **\n\n"
+    pm_caption = f"**Ê Thằng Lồn {(user_mention)} **\n\n"
     pm_caption += "**Cụp Cái Pha Xuống Không Bố Mày Đập Cho Nhoè Nét Đấy**\n\n"
     on = await aasf.send_file(event.chat_id, file=onetow1,caption=pm_caption)
 
