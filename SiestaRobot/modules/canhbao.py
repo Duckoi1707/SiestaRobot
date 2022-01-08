@@ -14,7 +14,7 @@ from SiestaRobot import StartTime, dispatcher
 
 edit_time = 5
 """ =======================2022====================== """
-luatbot1 = "https://telegra.ph/file/68fe15819e3c9db7ce32d.jpg"
+onetow1 = "https://telegra.ph/file/68fe15819e3c9db7ce32d.jpg"
 luatbot2 = "https://telegra.ph/file/ee0fa410c0414a650f673.jpg"
 luatbot3 = "https://telegra.ph/file/ee0fa410c0414a650f673.jpg"
 luatbot4 = "https://telegra.ph/file/789d31689646320c217c3.jpg"
@@ -27,7 +27,7 @@ async def doa(event):
     await event.delete()
     pm_caption = f"**Ê Thằng Lồn {user_mention} **\n\n"
     pm_caption += "**Cụp Cái Pha Xuống Không Bố Mày Đập Cho Nhoè Nét Đấy**\n\n"
-    on = await aasf.send_file(event.chat_id, file=luatbot1,caption=pm_caption)
+    on = await aasf.send_file(event.chat_id, file=onetow1,caption=pm_caption)
 
     await asyncio.sleep(edit_time)
     ok = await aasf.edit_message(event.chat_id, on, file=luatbot2) 
