@@ -579,20 +579,20 @@ __mod_name__ = "Stickers"
 __help__ = """
 *Help menu for stickers tools*
 
-❂ /stickerid*:* reply to a sticker to me to tell you its file ID.
-❂ /getsticker*:* reply to a sticker to me to upload its raw PNG file.
-❂ /kang*:* reply to a sticker to add it to your pack.
+❂ /stickerid*:* trả lời nhãn dán để tôi cho bạn biết ID tệp của nó.
+❂ /getsticker*:* trả lời một nhãn dán để tôi tải lên tệp PNG thô của nó.
+❂ /lamsticker*:* trả lời một nhãn dán để thêm nó vào gói của bạn.
 ❂ /delsticker*:* Reply to your anime exist sticker to your pack to delete it.
-❂ /stickers*:* Find stickers for given term on combot sticker catalogue
-❂ /tiny*:* To make small sticker
-❂ /kamuii <1-8> *:* To deepefying stiker
-❂ /mmf <reply with text>*:* To draw a text for sticker or pohots
+❂ /stickers*:* Tìm nhãn dán cho thuật ngữ nhất định trên danh mục nhãn dán combot
+❂ /tiny*:* Để tạo nhãn dán nhỏ
+❂ /kamuii <1-8> *:* Để đào sâu hình dán
+❂ /mmf <reply with text>*:* Để vẽ văn bản cho nhãn dán hoặc ảnh chụp
 """
 
 
 STICKERID_HANDLER = DisableAbleCommandHandler("stickerid", stickerid, run_async=True)
 GETSTICKER_HANDLER = DisableAbleCommandHandler("getsticker", getsticker, run_async=True)
-KANG_HANDLER = DisableAbleCommandHandler("kang", kang, pass_args=True, run_async=True)
+KANG_HANDLER = DisableAbleCommandHandler("lamsticker", kang, pass_args=True, run_async=True)
 DEL_HANDLER = DisableAbleCommandHandler("delsticker", delsticker, run_async=True)
 STICKERS_HANDLER = DisableAbleCommandHandler("stickers", cb_sticker, run_async=True)
 
