@@ -76,40 +76,40 @@ def ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("⚠️ User not found.")
+        message.reply_text("⚠️ Người dùng không được tìm thấy.")
         return log_message
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
         if excp.message != "User not found":
             raise
-        message.reply_text("Can't seem to find this person.")
+        message.reply_text("Dường như không thể tìm thấy người này.")
         return log_message
     if user_id == bot.id:
-        message.reply_text("Oh yeah, ban myself, noob!")
+        message.reply_text("Oh yeah, cấm bản thân mình đi, noob!")
         return log_message
 
     if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
         if user_id == OWNER_ID:
-            message.reply_text("Trying to put me against a King huh?")
+            message.reply_text("Cố gắng chống lại một vị Vua hả?")
         elif user_id in DEV_USERS:
-            message.reply_text("I can't act against our Prince.")
+            message.reply_text("Tôi không thể chống lại Hoàng tử của chúng tôi.")
         elif user_id in DRAGONS:
             message.reply_text(
-                "Fighting this Emperor here will put user lives at risk."
+                "Chiến đấu với Hoàng đế này ở đây sẽ khiến tính mạng người dùng gặp rủi ro."
             )
         elif user_id in DEMONS:
             message.reply_text(
-                "Bring an order from Captain to fight a Assasin servant."
+                "Mang theo lệnh từ Thuyền trưởng để chiến đấu với một người hầu Assasin."
             )
         elif user_id in TIGERS:
             message.reply_text(
-                "Bring an order from Soldier to fight a Lancer servant."
+                "Mang lệnh từ Soldier để chiến đấu với một người hầu của Lancer."
             )
         elif user_id in WOLVES:
-            message.reply_text("Trader access make them ban immune!")
+            message.reply_text("Quyền truy cập của người giao dịch khiến họ bị cấm miễn dịch!")
         else:
-            message.reply_text("⚠️ Cannot banned admin.")
+            message.reply_text("⚠️ Không thể cấm quản trị viên.")
         return log_message
     if message.text.startswith("/s"):
         silent = True
@@ -120,8 +120,8 @@ def ban(update: Update, context: CallbackContext) -> str:
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
         f"#{'S' if silent else ''}BANNED\n"
-        f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
-        f"<b>User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
+        f"<b>Quản trị viên:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+        f"<b>NGười Dùng:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
     )
     if reason:
         log += "\n<b>Reason:</b> {}".format(reason)
@@ -149,9 +149,9 @@ def ban(update: Update, context: CallbackContext) -> str:
                 [
                     [
                         InlineKeyboardButton(
-                            text="🔄  Unban", callback_data=f"unbanb_unban={user_id}"
+                            text="🔄  Mở Mõm", callback_data=f"unbanb_unban={user_id}"
                         ),
-                        InlineKeyboardButton(text="🗑️  Delete", callback_data="unbanb_del"),
+                        InlineKeyboardButton(text="🗑️  Xoá", callback_data="unbanb_del"),
                     ]
                 ]
             ),
@@ -175,7 +175,7 @@ def ban(update: Update, context: CallbackContext) -> str:
                 chat.id,
                 excp.message,
             )
-            message.reply_text("Uhm...that didn't work...")
+            message.reply_text("Uhm ... điều đó không hoạt động...")
 
     return log_message
 
@@ -195,7 +195,7 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("⚠️ User not found.")
+        message.reply_text("⚠️ Người dùng không được tìm thấy.")
         return log_message
 
     try:
@@ -255,9 +255,9 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
                 [
                     [
                         InlineKeyboardButton(
-                            text="🔄  Unban", callback_data=f"unbanb_unban={user_id}"
+                            text="🔄  Mở Mõm", callback_data=f"unbanb_unban={user_id}"
                         ),
-                        InlineKeyboardButton(text="🗑️  Delete", callback_data="unbanb_del"),
+                        InlineKeyboardButton(text="🗑️  Đóng", callback_data="unbanb_del"),
                     ]
                 ]
             ),
@@ -393,7 +393,7 @@ def punch(update: Update, context: CallbackContext) -> str:
         return log
 
     else:
-        message.reply_text("⚠️ Well damn, I can't punch that user.")
+        message.reply_text("⚠️ Chết tiệt, tôi không thể đấm người dùng đó.")
 
     return log_message
 
@@ -404,7 +404,7 @@ def punch(update: Update, context: CallbackContext) -> str:
 def punchme(update: Update, context: CallbackContext):
     user_id = update.effective_message.from_user.id
     if is_user_admin(update.effective_chat, user_id):
-        update.effective_message.reply_text("I wish I could... but you're an admin.")
+        update.effective_message.reply_text("Tôi ước tôi có thể ... nhưng bạn là quản trị viên.")
         return
 
     res = update.effective_chat.unban_member(user_id)  # unban on current user = kick
@@ -574,21 +574,21 @@ def snipe(update: Update, context: CallbackContext):
 __help__ = """
 *User Commands:*
 
-❂ /kickme*:* kicks the user who issued the command
+❂ /kickme*:* Đá người dùng đã ra nhóm
 
 *Admins only:*
 
-❂ /ban <userhandle>*:* bans a user. (via handle, or reply)
-❂ /sban <userhandle>*:* Silently ban a user. Deletes command, Replied message and doesn't reply. (via handle, or reply)
-❂ /tban <userhandle> x(m/h/d)*:* bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
-❂ /unban <userhandle>*:* unbans a user. (via handle, or reply)
-❂ /kick <userhandle>*:* kicks a user out of the group, (via handle, or reply)
-❂ /mute <userhandle>*:* silences a user. Can also be used as a reply, muting the replied to user.
-❂ /tmute <userhandle> x(m/h/d)*:* mutes a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
-❂ /unmute <userhandle>*:* unmutes a user. Can also be used as a reply, muting the replied to user.
-❂ /zombies*:* searches deleted accounts
-❂ /zombies clean*:* removes deleted accounts from the group.
-❂ /snipe <chatid> <string>*:* Make me send a message to a specific chat.
+❂ /ban <userhandle>*:* cấm người dùng. (qua tay cầm hoặc trả lời)
+❂ /sban <userhandle>*:* Cấm âm thầm người dùng. Xóa lệnh, tin nhắn đã trả lời và không trả lời. (qua tay cầm hoặc trả lời)
+❂ /tban <userhandle> x(m/h/d)*:* cấm người dùng trong x thời gian. (thông qua tay cầm, hoặc trả lời). m = phút, h = giờ, d = ngày.
+❂ /unban <userhandle>*:* bỏ cấm người dùng. (qua tay cầm hoặc trả lời)
+❂ /kick <userhandle>*:* loại người dùng ra khỏi nhóm, (thông qua tay cầm hoặc trả lời)
+❂ /mute <userhandle>*:* người dùng im lặng. Cũng có thể được sử dụng như một câu trả lời, tắt tiếng người dùng đã trả lời.
+❂ /tmute <userhandle> x(m/h/d)*:* tắt tiếng người dùng trong x thời gian. (thông qua tay cầm, hoặc trả lời). m = phút, h = giờ, d = ngày.
+❂ /unmute <userhandle>*:* bật tiếng người dùng. Cũng có thể được sử dụng như một câu trả lời, tắt tiếng người dùng đã trả lời.
+❂ /zombies*:* tìm kiếm các tài khoản đã xóa
+❂ /zombies clean*:* xóa các tài khoản đã xóa khỏi nhóm.
+❂ /snipe <chatid> <string>*:* Làm cho tôi gửi một tin nhắn đến một cuộc trò chuyện cụ thể.
 """
 
 
