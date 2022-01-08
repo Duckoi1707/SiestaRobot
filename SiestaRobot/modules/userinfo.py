@@ -149,7 +149,7 @@ def get_id(update: Update, context: CallbackContext):
             user2 = message.reply_to_message.forward_from
 
             msg.reply_text(
-                f"<b>Telegram ID:</b>\n"
+                f"<b>ID Telegram:</b>\n"
                 f"• {html.escape(user2.first_name)} - <code>{user2.id}</code>.\n"
                 f"• {html.escape(user1.first_name)} - <code>{user1.id}</code>.",
                 parse_mode=ParseMode.HTML,
@@ -189,19 +189,19 @@ async def group_info(event) -> None:
         ch_full = await event.client(GetFullChannelRequest(channel=entity))
     except:
         await event.reply(
-            "Can't for some reason, maybe it is a private one or that I am banned there.",
+            "Không thể vì lý do nào đó, có thể đó là một trang riêng tư hoặc tôi bị cấm ở đó.",
         )
         return
     msg = f"**ID**: `{entity.id}`"
-    msg += f"\n**Title**: `{entity.title}`"
-    msg += f"\n**Datacenter**: `{entity.photo.dc_id}`"
-    msg += f"\n**Video PFP**: `{entity.photo.has_video}`"
-    msg += f"\n**Supergroup**: `{entity.megagroup}`"
-    msg += f"\n**Restricted**: `{entity.restricted}`"
-    msg += f"\n**Scam**: `{entity.scam}`"
-    msg += f"\n**Slowmode**: `{entity.slowmode_enabled}`"
+    msg += f"\n**Chức vụ**: `{entity.title}`"
+    msg += f"\n**Trung tâm dữ liệur**: `{entity.photo.dc_id}`"
+    msg += f"\n**PFP Video**: `{entity.photo.has_video}`"
+    msg += f"\n**Nhóm siêu**: `{entity.megagroup}`"
+    msg += f"\n**Hạn chế**: `{entity.restricted}`"
+    msg += f"\n**Lừa đảo**: `{entity.scam}`"
+    msg += f"\n**Chế độ chậm**: `{entity.slowmode_enabled}`"
     if entity.username:
-        msg += f"\n**Username**: {entity.username}"
+        msg += f"\n**Tên tài khoản**: {entity.username}"
     msg += "\n\n**Member Stats:**"
     msg += f"\n`Admins:` `{len(totallist)}`"
     msg += f"\n`Users`: `{totallist.total}`"
@@ -221,7 +221,7 @@ def gifid(update: Update, context: CallbackContext):
             parse_mode=ParseMode.HTML,
         )
     else:
-        update.effective_message.reply_text("Please reply to a gif to get its ID.")
+        update.effective_message.reply_text("Vui lòng trả lời gif để lấy ID của nó.")
 
 
 def info(update: Update, context: CallbackContext):
@@ -254,7 +254,7 @@ def info(update: Update, context: CallbackContext):
     rep = message.reply_text("<code>Getting info...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"╔═━「<b> Appraisal results:</b> 」\n"
+        f"╔═━「<b>Kết quả thẩm định:</b> 」\n"
         f"✪ ID: <code>{user.id}</code>\n"
         f"✪ First Name: {html.escape(user.first_name)}"
     )
@@ -409,7 +409,7 @@ def about_me(update: Update, context: CallbackContext):
             f"{username} hasn't set an info message about themselves yet!",
         )
     else:
-        update.effective_message.reply_text("There isnt one, use /setme to set one.")
+        update.effective_message.reply_text("Không có một cái nào cả, hãy sử dụng / setme để đặt một cái.")
 
 
 def set_about_me(update: Update, context: CallbackContext):
@@ -432,9 +432,9 @@ def set_about_me(update: Update, context: CallbackContext):
             if user_id in [777000, 1087968824]:
                 message.reply_text("Authorized...Information updated!")
             elif user_id == bot.id:
-                message.reply_text("I have updated my info with the one you provided!")
+                message.reply_text("Tôi đã cập nhật thông tin của mình với thông tin bạn cung cấp!")
             else:
-                message.reply_text("Information updated!")
+                message.reply_text("Đã cập nhật thông tin!")
         else:
             message.reply_text(
                 "The info needs to be under {} characters! You have {}.".format(
@@ -445,9 +445,9 @@ def set_about_me(update: Update, context: CallbackContext):
 
 @sudo_plus
 def stats(update: Update, context: CallbackContext):
-    stats = "<b>╔═━「 Current Siesta Statistics 」</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
+    stats = "<b>╔═━「 Thống kê về giấc ngủ trưa hiện tại 」</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
-    result += "\n<b>╘═━「 Powered By Shiinobu 」</b>"
+    result += "\n<b>╘═━「 Được cung cấp bởi OGGY 」</b>"
     update.effective_message.reply_text(
         result,
         parse_mode=ParseMode.HTML, 
@@ -472,11 +472,11 @@ def about_bio(update: Update, context: CallbackContext):
     elif message.reply_to_message:
         username = user.first_name
         update.effective_message.reply_text(
-            f"{username} hasn't had a message set about themselves yet!\nSet one using /setbio",
+            f"{username} vẫn chưa đặt một tin nhắn nào về chính họ! \nHãy đặt một tin nhắn bằng cách sử dụng /setbio",
         )
     else:
         update.effective_message.reply_text(
-            "You haven't had a bio set about yourself yet!",
+            "Bạn chưa có tiểu sử về bản thân!",
         )
 
 
@@ -491,17 +491,17 @@ def set_about_bio(update: Update, context: CallbackContext):
 
         if user_id == message.from_user.id:
             message.reply_text(
-                "Ha, you can't set your own bio! You're at the mercy of others here...",
+                "Ha, bạn không thể thiết lập tiểu sử của riêng bạn! Bạn đang ở trong lòng thương xót của những người khác ở đây...",
             )
             return
 
         if user_id in [777000, 1087968824] and sender_id not in DEV_USERS:
-            message.reply_text("You are not authorised")
+            message.reply_text("Bạn không được ủy quyền")
             return
 
         if user_id == bot.id and sender_id not in DEV_USERS:
             message.reply_text(
-                "Erm... yeah, I only trust the Ackermans to set my bio.",
+                "Erm ... vâng, tôi chỉ tin tưởng người Ackermans sẽ thiết lập tiểu sử của tôi.",
             )
             return
 
@@ -514,16 +514,16 @@ def set_about_bio(update: Update, context: CallbackContext):
             if len(bio[1]) < MAX_MESSAGE_LENGTH // 4:
                 sql.set_user_bio(user_id, bio[1])
                 message.reply_text(
-                    "Updated {}'s bio!".format(repl_message.from_user.first_name),
+                    "Đã cập nhật {}'s Thông Tin!".format(repl_message.from_user.first_name),
                 )
             else:
                 message.reply_text(
-                    "Bio needs to be under {} characters! You tried to set {}.".format(
+                    "Bio cần phải được {} nhân vật! Bạn đã cố gắng để đạt đượct {}.".format(
                         MAX_MESSAGE_LENGTH // 4, len(bio[1]),
                     ),
                 )
     else:
-        message.reply_text("Reply to someone to set their bio!")
+        message.reply_text("Trả lời ai đó để thiết lập tiểu sử của họ!")
 
 
 def __user_info__(user_id):
@@ -531,49 +531,49 @@ def __user_info__(user_id):
     me = html.escape(sql.get_user_me_info(user_id) or "")
     result = ""
     if me:
-        result += f"<b>About user:</b>\n{me}\n"
+        result += f"<b>Về người dùng:</b>\n{me}\n"
     if bio:
-        result += f"<b>What others say:</b>\n{bio}\n"
+        result += f"<b>Những gì người khác nói:</b>\n{bio}\n"
     result = result.strip("\n")
     return result
 
 
 __help__ = """
 *ID:*
-❂ /id*:* get the current group id. If used by replying to a message, gets that user's id.
-❂ /gifid*:* reply to a gif to me to tell you its file ID.
+❂ /id*:* lấy id nhóm hiện tại. Nếu được sử dụng bằng cách trả lời một tin nhắn, hãy lấy id của người dùng đó.
+❂ /gifid*:* trả lời gif cho tôi để cho bạn biết ID tệp của nó.
  
 *Self addded information:* 
-❂ /setme <text>*:* will set your info
-❂ /me*:* will get your or another user's info.
+❂ /setme <text>*:* sẽ thiết lập thông tin của bạn
+❂ /me*:* sẽ nhận được thông tin của bạn hoặc của người dùng khác.
 Examples:
-❂ /setme I am a wolf.
-❂ /me @username(defaults to yours if no user specified)
+❂ /setme Tôi là một con sói.
+❂ /me @username(mặc định cho của bạn nếu không có người dùng chỉ định)
  
 *Information others add on you:* 
-❂ /bio*:* will get your or another user's bio. This cannot be set by yourself.
-❂ /setbio <text>*:* while replying, will save another user's bio 
+❂ /thongtin*:*sẽ lấy tiểu sử của bạn hoặc của người dùng khác. Điều này không thể được thiết lập bởi chính bạn.
+❂ /xacminh <text>*:* trong khi trả lời, sẽ lưu tiểu sử của người dùng khác
 Examples:
-❂ /bio @username(defaults to yours if not specified).
-❂ /setbio This user is a wolf (reply to the user)
+❂ /thongtin @username(mặc định cho của bạn nếu không được chỉ định).
+❂ /xacminh Người dùng này là một con sói (trả lời người dùng)
  
-*Overall Information about you:*
-❂ /info*:* get information about a user. 
+*Overall Thông tin về bạn:*
+❂ /info*:* nhận thông tin về một người dùng. 
  
 *json Detailed info:*
-❂ /json*:* Get Detailed info about any message.
+❂ /json*:* Nhận thông tin chi tiết về bất kỳ tin nhắn nào.
  
 *AFk:*
-When marked as AFK, any mentions will be replied to with a message stating that you're not available!
-❂ /afk <reason>*:* Mark yourself as AFK.
-  - brb <reason>: Same as the afk command, but not a command. 
+Khi được đánh dấu là AFK, mọi đề cập sẽ được trả lời bằng một thông báo cho biết rằng bạn không rảnh!
+❂ /afk <reason>*:* Đánh dấu mình là AFK.
+  - brb <reason>: Giống như lệnh afk, nhưng không phải là lệnh. 
   
-*What is that health thingy?*
- Come and see [HP System explained](https://t.me/KennedyProject/44)
+*Sức khỏe đó là gì?*
+ Hãy đến mà xem [HP System explained](https://t.me/KennedyProject/44)
 """
 
-SET_BIO_HANDLER = DisableAbleCommandHandler("setbio", set_about_bio, run_async=True)
-GET_BIO_HANDLER = DisableAbleCommandHandler("bio", about_bio, run_async=True)
+SET_BIO_HANDLER = DisableAbleCommandHandler("thongtin", set_about_bio, run_async=True)
+GET_BIO_HANDLER = DisableAbleCommandHandler("xacminh", about_bio, run_async=True)
 
 STATS_HANDLER = CommandHandler(["stats", "statistics"], stats, run_async=True)
 ID_HANDLER = DisableAbleCommandHandler("id", get_id, run_async=True)
