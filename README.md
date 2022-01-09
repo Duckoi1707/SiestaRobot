@@ -1,5 +1,5 @@
 <h2 align="center">
-    ──「 SIESTA ROBOT IS A MODULAR BOT WITH ANIME THEME 」──
+    ──「 THUBG 」──
 </h2>
 
 <p align="center">
