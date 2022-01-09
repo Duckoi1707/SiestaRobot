@@ -52,11 +52,4 @@
 
 ```
 This Bot is Created by ShinobuProject, If your kanging this without fork at least give a credit to get a smile of my hard work. 
-- SiestaRobot
-- EmikoRobot
-- YoneRobot
-- SaitamaRobot 
-- TheRealPhoenixBot
-- DaisyX 
-- WilliamButcherBot
-```
+Xver2 Robot
